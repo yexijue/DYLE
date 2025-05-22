@@ -335,6 +335,13 @@ class ReportSumBase(DatasetBase):
                 summary = session["summary"]
 
                 if len(report) < 10:
+                    print("----------- 被滤掉的报告内容 -----------")
+                    print("Report content is too short:")
+                    print(report[:8])
+                    print("----------- 被滤掉的摘要内容 -----------")
+                    print("Summary content is too short:")
+                    print(summary[:300])
+                    print("----------- 结束 -----------")
                     continue
 
                 references.append(summary)
@@ -347,6 +354,13 @@ class ReportSumBase(DatasetBase):
         summary = session["summary"]
 
         if len(report) < 10:
+            print("----------- 被滤掉的报告内容 -----------")
+            print("Report content is too short:")
+            print(report[:8])
+            print("----------- 被滤掉的摘要内容 -----------")
+            print("Summary content is too short:")
+            print(summary[:300])
+            print("----------- 结束 -----------")
             return None
         if config.use_query:
             query = tokenize(session["query"])

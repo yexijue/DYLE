@@ -5,7 +5,7 @@ import nltk
 from dataloaders.qmsum import QMSum
 from dataloaders.arxiv import Arxiv
 from dataloaders.govreport import GovReport
-
+import time
 import random
 from tqdm import tqdm
 from config import Config
@@ -212,7 +212,7 @@ class Experiment(object):
                                   'govreport-latent',
                                   ]:
             if config.target_task in ['govreport-latent']:
-                beam_size = 4  # Use beam_size = 1 for validation
+                beam_size = 1  # Use beam_size = 1 for validation
             elif config.target_task in ['arxiv-latent']:
                 beam_size = 5
             elif config.target_task in ['qmsum']:
@@ -346,6 +346,7 @@ class Experiment(object):
 
         # Eval!
         print("\n\n\n\n***** Running evaluation *****")
+        print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         print("  Num examples = {}".format(len(the_set)))
         print("  Batch size = {}".format(1))
 

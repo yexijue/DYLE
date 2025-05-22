@@ -9,7 +9,7 @@ Install dependencies via:
 conda create -n dyle python=3.9.6
 conda activate dyle
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
-pip install nltk==3.6.2 pyrouge==0.1.3 transformers==4.8.1 rouge==1.0.0 datasets==1.11.0
+pip install nltk==3.6.2 pyrouge==0.1.3 transformers==4.8.1 rouge==1.0.0 datasets==1.11.0 # huggingface_hub需要更新和传递令牌
 ```
 
 ## Folder Structure
@@ -30,6 +30,7 @@ pip install nltk==3.6.2 pyrouge==0.1.3 transformers==4.8.1 rouge==1.0.0 datasets
 - Download ArXiv from Hugging Face at https://huggingface.co/datasets/scientific_papers
 - We provide cleaned dataset with oracle (in jsonl) for QMSum and GovReport from [Google Drive](https://drive.google.com/drive/folders/1I5l9j00e0RVrgM1ayiiCP_R66XuAps38?usp=sharing). Download them and place them under `data/`
 - ArXiv dataset and oracles are loaded separately
+- 补充：使用data/download_from_google.py下载即可
 
 ### Training the Model
 - After we clean the datasets and process the oracles, setup the paths of scripts at `dataloaders/*.py`
@@ -45,6 +46,7 @@ python train.py
 ### Evaluation
 - First download the checkpoint from [Google Drive](https://drive.google.com/drive/folders/1QoAu-C5TfRybe_tbT9oZrp7abbli_eJS?usp=sharing) and place the folders under `./outputs/saved_model/`
 - Set the `self.target_task` flag in `config.py` to choose the target task
+- 补充：添加了打印调试，可以知道哪一条被过滤了
 ```
 python test.py
 ```

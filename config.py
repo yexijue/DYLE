@@ -35,11 +35,11 @@ class Config(object):
         self.optimizer = 'adam'
         self.filtered_oracle = False
         
-        self.early_preprocess = True
+        self.early_preprocess = True # 如果设置为True则文本小于10时会被略过
 
         self.train_batch_size = 8 
-        self.eval_batch_size = 1
-        self.test_batch_size = 1
+        self.eval_batch_size = 4
+        self.test_batch_size = 4
         self.gradient_accumulation_steps = 8 
         assert self.train_batch_size % self.gradient_accumulation_steps == 0
 
